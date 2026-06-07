@@ -216,9 +216,11 @@
   </footer>
 </div>
 
-<script src="https://alcdn.msauth.net/browser/2.38.3/js/msal-browser.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@azure/msal-browser@2/dist/browser/msal-browser.min.js" onerror="document.getElementById('view-loading').style.display='none';document.getElementById('view-signin').style.display='';"></script>
 <script>
 (function(){
+  if (typeof msal === 'undefined') return;
+
   var msalConfig = {
     auth: {
       clientId: '5e00bfe2-999d-486e-adb1-afc86f2be88b',
@@ -231,7 +233,15 @@
     }
   };
 
-  var msalInstance = new msal.PublicClientApplication(msalConfig);
+  var msalInstance;
+  try {
+    msalInstance = new msal.PublicClientApplication(msalConfig);
+  } catch(e) {
+    console.error(e);
+    document.getElementById('view-loading').style.display = 'none';
+    document.getElementById('view-signin').style.display = '';
+    return;
+  }
 
   function show(id) {
     ['view-loading','view-signin','view-denied','view-members'].forEach(function(v){
@@ -261,7 +271,11 @@
   document.getElementById('signout-btn').addEventListener('click', signout);
   document.getElementById('signout-denied-btn').addEventListener('click', signout);
 
-  msalInstance.initialize().then(function(){
+  var initPromise = typeof msalInstance.initialize === 'function'
+    ? msalInstance.initialize()
+    : Promise.resolve();
+
+  initPromise.then(function(){
     return msalInstance.handleRedirectPromise();
   }).then(function(response){
     var account = response ? response.account : (msalInstance.getAllAccounts()[0] || null);
