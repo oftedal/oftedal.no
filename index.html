@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Oftedal.no</title>
-<meta name="description" content="Oftedal.no — the Oftedal family online.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%232C2C2A'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='44' font-weight='600' fill='%23F5F4F0' text-anchor='middle'%3EO%3C/text%3E%3C/svg%3E">
+<meta name="description" content="Oftedal.no">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%232C2C2A'/%3E%3Ctext x='48' y='70' font-family='Georgia,serif' font-size='52' font-weight='600' fill='%23F5F4F0' text-anchor='middle'%3EO%3C/text%3E%3Ccircle cx='70' cy='62' r='5' fill='%23C89B6A'/%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -30,6 +30,25 @@
   }
   .wrap{max-width:920px;margin:0 auto;padding:0 28px;}
   header{padding:96px 0 12px;}
+  .o-mark{
+    font-family:var(--serif);
+    font-size:64px;
+    font-weight:500;
+    color:var(--ink);
+    line-height:1;
+    position:relative;
+    display:inline-block;
+    margin-bottom:26px;
+  }
+  .o-mark .o-dot{
+    position:absolute;
+    right:-10px;
+    bottom:11px;
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--bronze);
+  }
   .welcome{
     font-family:var(--serif);
     font-size:54px;
@@ -39,15 +58,6 @@
     letter-spacing:-.5px;
   }
   .welcome .dot{color:var(--bronze);}
-  .sub{
-    font-family:var(--serif);
-    font-size:22px;
-    font-weight:400;
-    color:var(--ink-soft);
-    margin-top:20px;
-    max-width:520px;
-    line-height:1.45;
-  }
   .rule{height:1px;background:var(--line);margin:56px 0;}
   .eyebrow{
     font-size:11px;letter-spacing:3px;text-transform:uppercase;
@@ -90,23 +100,29 @@
     border:1px solid var(--line);
     border-radius:4px;
     padding:30px;
-    text-decoration:none;
-    color:inherit;
-    display:block;
-    transition:border-color .3s ease,transform .3s ease;
+    transition:border-color .3s ease;
   }
-  .person:hover{border-color:var(--bronze);transform:translateY(-2px);}
+  .person:hover{border-color:var(--bronze);}
   .person .initial{
     font-family:var(--serif);font-size:30px;font-weight:500;color:var(--bronze);
     line-height:1;display:inline-block;margin-bottom:10px;
   }
   .person .pname{font-family:var(--serif);font-size:26px;font-weight:500;color:var(--ink);line-height:1.1;}
-  .person .plink{
-    font-size:12px;letter-spacing:1px;color:var(--ink-soft);margin-top:8px;
+  .actions{display:flex;align-items:center;gap:18px;margin-top:14px;}
+  .actions a{
     display:inline-flex;align-items:center;gap:6px;
+    font-family:var(--sans);font-size:12px;letter-spacing:1px;
+    color:var(--ink-soft);text-decoration:none;
+    transition:color .25s ease;
   }
-  .person .plink .arrow{transition:transform .25s ease;}
-  .person:hover .plink .arrow{transform:translateX(3px);}
+  .actions a:hover{color:var(--ink);}
+  .actions a svg{width:15px;height:15px;display:block;}
+  .actions .li svg{fill:var(--ink-soft);transition:fill .25s ease;}
+  .actions .li:hover svg{fill:#0A66C2;}
+  .actions .web svg{stroke:var(--ink-soft);fill:none;transition:stroke .25s ease;}
+  .actions .web:hover svg{stroke:var(--bronze);}
+  .actions .em svg{stroke:var(--ink-soft);fill:none;transition:stroke .25s ease;}
+  .actions .em:hover svg{stroke:var(--bronze);}
   footer{padding:64px 0;}
   .foot-text{font-size:12px;color:var(--ink-faint);line-height:1.7;letter-spacing:.3px;}
   .foot-text a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line);}
@@ -116,7 +132,6 @@
   @media (max-width:680px){
     header{padding:64px 0 8px;}
     .welcome{font-size:40px;}
-    .sub{font-size:19px;}
     .callout{flex-direction:column;align-items:flex-start;}
     .people{grid-template-columns:1fr;}
   }
@@ -125,12 +140,12 @@
 <body>
 <div class="wrap">
   <header class="reveal">
-    <h1 class="welcome">Welcome to Oftedal<span class="dot">.</span>no</h1>
-    <p class="sub">The Oftedal family online.</p>
+    <div class="o-mark">O<span class="o-dot"></span></div>
+    <h1 class="welcome">Oftedal<span class="dot">.</span>no</h1>
   </header>
   <div class="rule"></div>
   <section class="reveal">
-    <p class="eyebrow">Looking for 4E?</p>
+    <p class="eyebrow">Companies</p>
     <a class="callout" href="4e.html" style="text-decoration:none;color:inherit;">
       <div class="c-left">
         <span class="c-mark"><span class="m">4E</span><span class="d"></span></span>
@@ -141,21 +156,64 @@
       </div>
       <span class="btn">Visit 4E &rarr;</span>
     </a>
+    <a class="callout" href="https://www.hoilandadvisory.com" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;margin-top:16px;">
+      <div class="c-left">
+        <span class="c-mark" aria-hidden="true">
+          <svg width="38" height="45" viewBox="0 0 44 52"><path d="M22 3 L40 9 V26 C40 37 32 45 22 49 C12 45 4 37 4 26 V9 Z" fill="none" stroke="#1B2A3A" stroke-width="1.6"/><path d="M16 19 V33 M28 19 V33 M16 26 H28" stroke="#1B2A3A" stroke-width="2.3" stroke-linecap="round"/></svg>
+        </span>
+        <div class="c-text">
+          <div class="ct-title">Hoiland Advisory</div>
+          <div class="ct-sub">Cybersecurity &amp; CISO advisory</div>
+        </div>
+      </div>
+      <span class="btn">Visit &rarr;</span>
+    </a>
   </section>
   <div class="rule"></div>
   <section class="reveal">
     <p class="eyebrow">People</p>
     <div class="people">
-      <a class="person" href="https://linkedin.com/in/einaroftedal" target="_blank" rel="noopener noreferrer">
+      <div class="person">
         <span class="initial">E</span>
         <div class="pname">Einar Oftedal</div>
-        <span class="plink">LinkedIn <span class="arrow">&rarr;</span></span>
-      </a>
-      <a class="person" href="https://erlend.oftedal.no" target="_blank" rel="noopener noreferrer">
+        <div class="actions">
+          <a class="li" href="https://www.linkedin.com/in/einaroftedal" target="_blank" rel="noopener noreferrer" aria-label="Einar Oftedal on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</a>
+          <a class="web" href="https://einar.oftedal.no" target="_blank" rel="noopener noreferrer" aria-label="Einar Oftedal website"><svg viewBox="0 0 24 24" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg> Website</a>
+          <a class="em" data-user="einar" data-domain="oftedal" data-tld="no" href="#"><svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg> Email</a>
+        </div>
+      </div>
+      <div class="person">
         <span class="initial">E</span>
         <div class="pname">Erlend Oftedal</div>
-        <span class="plink">erlend.oftedal.no <span class="arrow">&rarr;</span></span>
-      </a>
+        <div class="actions">
+          <a class="li" href="https://www.linkedin.com/in/erlendoftedal/" target="_blank" rel="noopener noreferrer" aria-label="Erlend Oftedal on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</a>
+          <a class="web" href="https://erlend.oftedal.no" target="_blank" rel="noopener noreferrer" aria-label="Erlend Oftedal website"><svg viewBox="0 0 24 24" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg> Website</a>
+          <a class="em" data-user="erlend" data-domain="oftedal" data-tld="no" href="#"><svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg> Email</a>
+        </div>
+      </div>
+      <div class="person">
+        <span class="initial">E</span>
+        <div class="pname">Elisabeth H&oslash;iland</div>
+        <div class="actions">
+          <a class="li" href="https://www.linkedin.com/in/elisabethhoiland/" target="_blank" rel="noopener noreferrer" aria-label="Elisabeth H&oslash;iland on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</a>
+          <a class="em" data-user="elisabeth" data-domain="hoilandadvisory" data-tld="com" href="#"><svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg> Email</a>
+        </div>
+      </div>
+      <div class="person">
+        <span class="initial">T</span>
+        <div class="pname">Tore Oftedal</div>
+        <div class="actions">
+          <a class="li" href="https://www.linkedin.com/in/toreoftedal/" target="_blank" rel="noopener noreferrer" aria-label="Tore Oftedal on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</a>
+          <a class="em" data-user="tore" data-domain="oftedal" data-tld="no" href="#"><svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg> Email</a>
+        </div>
+      </div>
+      <div class="person">
+        <span class="initial">&Aring;</span>
+        <div class="pname">&Aring;dne Tj&oslash;rhom</div>
+        <div class="actions">
+          <a class="em" data-user="aadne" data-domain="oftedal" data-tld="no" href="#"><svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg> Email</a>
+        </div>
+      </div>
     </div>
   </section>
   <footer class="reveal">
@@ -166,6 +224,14 @@
   </footer>
 </div>
 <script>
+  (function(){
+    document.querySelectorAll('a.em').forEach(function(a){
+      var u=a.getAttribute('data-user');
+      var d=a.getAttribute('data-domain');
+      var t=a.getAttribute('data-tld');
+      a.setAttribute('href','mailto:'+u+'@'+d+'.'+t);
+    });
+  })();
   const obs=new IntersectionObserver((es)=>{
     es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
   },{threshold:.12});
