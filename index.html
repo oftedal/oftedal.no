@@ -49,15 +49,22 @@
     border-radius:50%;
     background:var(--bronze);
   }
-  .welcome{
+  .tagline-head{
     font-family:var(--serif);
-    font-size:54px;
+    font-size:28px;
     font-weight:500;
     color:var(--ink);
-    line-height:1.05;
-    letter-spacing:-.5px;
+    line-height:1.15;
+    letter-spacing:-.2px;
+    margin-bottom:14px;
   }
-  .welcome .dot{color:var(--bronze);}
+  .tagline-head .dot{color:var(--bronze);}
+  .tagline-body{
+    font-size:15px;
+    color:var(--ink-soft);
+    max-width:600px;
+    line-height:1.65;
+  }
   .rule{height:1px;background:var(--line);margin:56px 0;}
   .eyebrow{
     font-size:11px;letter-spacing:3px;text-transform:uppercase;
@@ -132,7 +139,7 @@
   .reveal.in{opacity:1;transform:none;}
   @media (max-width:680px){
     header{padding:64px 0 8px;}
-    .welcome{font-size:40px;}
+    .tagline-head{font-size:22px;}
     .callout{flex-direction:column;align-items:flex-start;}
     .people{grid-template-columns:1fr;}
   }
@@ -142,7 +149,8 @@
 <div class="wrap">
   <header class="reveal">
     <div class="o-mark">O<span class="o-dot"></span></div>
-    <h1 class="welcome">Oftedal<span class="dot">.</span>no</h1>
+    <h1 class="tagline-head">The Oftedal companies, ventures &amp; people<span class="dot">.</span></h1>
+    <p class="tagline-body">A family of independent businesses spanning investment &amp; holdings, AI-native R&amp;D advisory and cybersecurity leadership — and the people building them. This is the hub that connects them.</p>
   </header>
   <div class="rule"></div>
   <section class="reveal">
