@@ -133,6 +133,7 @@
       Sign in with your @oftedal.no Microsoft account to continue.
     </p>
     <button id="signin-btn" class="btn">Sign in with Microsoft &rarr;</button>
+    <p id="signin-error" style="display:none;margin-top:18px;font-size:13px;color:#b00;"></p>
   </section>
   <footer>
     <p class="foot-text">Oftedal.no &middot; Norway</p>
@@ -266,7 +267,13 @@
   }
 
   document.getElementById('signin-btn').addEventListener('click', function(){
-    msalInstance.loginRedirect({ scopes: ['openid','profile','email'] });
+    document.getElementById('signin-error').style.display = 'none';
+    msalInstance.loginRedirect({ scopes: ['openid','profile','email'] }).catch(function(err){
+      console.error(err);
+      var el = document.getElementById('signin-error');
+      el.textContent = err.message || String(err);
+      el.style.display = '';
+    });
   });
   document.getElementById('signout-btn').addEventListener('click', signout);
   document.getElementById('signout-denied-btn').addEventListener('click', signout);
